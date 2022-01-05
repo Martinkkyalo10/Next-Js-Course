@@ -1,7 +1,10 @@
+import EventList from "../../components/events/eventList";
+import { getFeaturedEvents } from "../../data";
+
 export default function AllEventsPage() {
   return (
     <div>
-      <h1>This is all events page</h1>
+      <EventList items={getFeaturedEvents} />
     </div>
   );
 }
