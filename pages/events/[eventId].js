@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { getEventById, getAllEvents } from "../../helpers/api-util";
+import { getEventById, getFeaturedEvents } from "../../helpers/api-util";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
@@ -12,11 +12,9 @@ export default function EventDetailsPage(props) {
   // validate event
   if (!event) {
     return (
-      <Fragment>
-        <ErrorAlert>
-          <p>No event found!</p>
-        </ErrorAlert>
-      </Fragment>
+      <div className="center">
+        <p>Loading...</p>
+      </div>
     );
   }
 
@@ -44,14 +42,19 @@ export async function getStaticProps(context) {
     props: {
       selectedEvent: event,
     },
+    // regenerate page after 30 second to reflect changes since the last request
+    revalidate: 30,
   };
 }
 
 export async function getStaticPaths() {
-  const events = await getAllEvents();
+  const events = await getFeaturedEvents();
   const paths = events.map((event) => ({ params: { eventId: event.id } }));
   return {
     paths: paths,
-    fallback: false,
+    // tell nextjs there are more pages to be generated here. it should generate a page that was not pregenerated before
+    // fallback: true,
+    fallback: "blocking",
+    //  seting fallback  'blocking" prevents next js from serving anything until it is done generating the page
   };
 }

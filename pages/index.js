@@ -1,4 +1,3 @@
-
 import { getFeaturedEvents } from "../helpers/api-util";
 import EventList from "../components/events/eventList";
 
@@ -16,5 +15,7 @@ export async function getStaticProps() {
     props: {
       events: featuredEvents,
     },
+    // the page will regenerate after every 0.5 hours after last request
+    revalidate: 1800,
   };
 }
