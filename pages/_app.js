@@ -7,7 +7,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
-        <meta name="Viewport" content="initial-scale=1.0, width=device-width" />
+        <title>Social Events</title>
+        <meta name="description" content="Explore Social events" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Component {...pageProps} />
     </Layout>
