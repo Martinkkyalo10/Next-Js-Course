@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Axios from "axios";
 import classes from "./newsletter-registration.module.css";
 
 function NewsletterRegistration() {
@@ -11,8 +12,8 @@ function NewsletterRegistration() {
     // optional: validate input
 
     // send valid data to API
-    fetch("http://localhost:3000/newsletter", {
-      method: "POST",
+    fetch("/api/newsletter", {
+      method: "post",
       body: JSON.stringify({ email: enteredEmail }),
       headers: {
         "Content-Type": "application/json",

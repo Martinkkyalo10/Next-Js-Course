@@ -16,7 +16,7 @@ export default function handler(req, res) {
 
     //   construct a new object for saving in the database
     const newComment = {
-      id: new Date().toISOString(),
+      id: eventId,
       email,
       name,
       text,
