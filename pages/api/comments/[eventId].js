@@ -24,6 +24,12 @@ export default function handler(req, res) {
     console.log(newComment);
     res.status(201).json({ message: "Added comment.", comment: newComment });
   }
-  //   if (req.method === "Get") {
-  //   }
+  if (req.method === "Get") {
+    const dummyList = [
+      { id: "a1", name: "Martin", text: "my first comment" },
+      { id: "a2", name: "Kyalo", text: "my second comment." },
+    ];
+
+    res.status(200).json({ comments: dummyList });
+  }
 }
