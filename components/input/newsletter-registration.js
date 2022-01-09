@@ -12,7 +12,7 @@ function NewsletterRegistration() {
     // optional: validate input
 
     // send valid data to API
-    fetch("/api/newsletter", {
+    fetch("http://localhost:5000/api/newslettter", {
       method: "post",
       body: JSON.stringify({ email: enteredEmail }),
       headers: {
